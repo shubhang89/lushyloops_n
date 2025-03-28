@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { categories } from "@/data/products";
 
 const FeaturedCategories = () => {
-  // Images for each category (using placeholder.svg for now)
+  // Images for each category
   const categoryImages = {
-    keychain: "/placeholder.svg",
-    pot: "/placeholder.svg",
-    bouquet: "/placeholder.svg",
-    flowers: "/placeholder.svg",
+    keychain: "/lovable-uploads/1899aebd-bf21-4eb6-81f5-2f5e58af5138.png",
+    pot: "/lovable-uploads/69327515-570a-4348-98e0-fa3c08266db2.png",
+    bouquet: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
+    flowers: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
   };
 
   return (

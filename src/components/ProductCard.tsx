@@ -58,7 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <h3 className="font-medium text-lg mb-1 line-clamp-1">{product.name}</h3>
         <p className="text-muted-foreground text-sm mb-2 line-clamp-2">{product.description}</p>
         <div className="flex justify-between items-center mt-3">
-          <span className="font-semibold">${product.price.toFixed(2)}</span>
+          <span className="font-semibold">₹{product.price.toLocaleString('en-IN')}</span>
           <Button
             size="sm"
             onClick={handleAddToCart}

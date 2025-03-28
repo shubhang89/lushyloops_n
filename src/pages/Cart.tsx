@@ -104,7 +104,7 @@ const Cart = () => {
                       </h3>
                     </Link>
                     <div className="text-muted-foreground text-sm mt-1">
-                      ${item.product.price.toFixed(2)} each
+                      ₹{item.product.price.toLocaleString('en-IN')} each
                     </div>
                     
                     <div className="flex justify-between items-center mt-2">
@@ -133,7 +133,7 @@ const Cart = () => {
                       
                       <div className="flex items-center gap-4">
                         <span className="font-semibold">
-                          ${(item.product.price * item.quantity).toFixed(2)}
+                          ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                         </span>
                         <Button
                           variant="ghost"
@@ -162,7 +162,7 @@ const Cart = () => {
             <div className="space-y-3 mb-4">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span>${getTotalPrice().toFixed(2)}</span>
+                <span>₹{getTotalPrice().toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Shipping</span>
@@ -178,7 +178,7 @@ const Cart = () => {
             
             <div className="flex justify-between font-semibold text-lg mb-6">
               <span>Total</span>
-              <span>${getTotalPrice().toFixed(2)}</span>
+              <span>₹{getTotalPrice().toLocaleString('en-IN')}</span>
             </div>
             
             <Button

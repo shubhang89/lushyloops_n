@@ -2,8 +2,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter, Mail, Phone } from "lucide-react";
+import { addSubscriber } from "@/data/subscribers";
+import { toast } from "@/components/ui/use-toast";
+import { Input } from "@/components/ui/input";
 
 const Footer = () => {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+    
+    if (emailInput && emailInput.value) {
+      try {
+        addSubscriber(emailInput.value);
+        toast({
+          title: "Successfully subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        emailInput.value = '';
+      } catch (error) {
+        if (error instanceof Error) {
+          toast({
+            title: "Subscription failed",
+            description: error.message,
+            variant: "destructive",
+          });
+        }
+      }
+    }
+  };
+
   return (
     <footer className="bg-beige-100 text-foreground">
       <div className="container mx-auto px-4 py-10">
@@ -92,21 +120,26 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={16} className="mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9876543210</span>
               </li>
             </ul>
             <div className="mt-4">
               <h4 className="text-sm font-medium mb-2">Newsletter</h4>
-              <div className="flex">
-                <input
+              <form onSubmit={handleSubscribe} className="flex">
+                <Input
                   type="email"
+                  name="email"
                   placeholder="Your email"
                   className="flex-1 px-3 py-2 text-sm border border-beige-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-beige-400"
+                  required
                 />
-                <button className="bg-beige-300 px-3 py-2 text-sm font-medium rounded-r-md hover:bg-beige-400 transition-colors">
+                <button 
+                  type="submit" 
+                  className="bg-beige-300 px-3 py-2 text-sm font-medium rounded-r-md hover:bg-beige-400 transition-colors"
+                >
                   Subscribe
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
