@@ -16,7 +16,7 @@ const Home = () => {
       image: "/lovable-uploads/6ffe79d1-a640-4e6c-b8aa-0d439e9cc707.png",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
-      action: "Shop Now",
+      buttonText: "Shop Now",
       link: "/shop",
     },
     {
@@ -24,7 +24,7 @@ const Home = () => {
       image: "/lovable-uploads/b846a6a2-0f49-4531-af92-b15cfc5209f3.png",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
-      action: "Shop Keychains",
+      buttonText: "Shop Keychains",
       link: "/category/keychain",
     },
     {
@@ -32,7 +32,7 @@ const Home = () => {
       image: "/lovable-uploads/7f1dae90-18c3-4d87-859d-02b5caca0e5c.png",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
-      action: "Shop Pots",
+      buttonText: "Shop Pots",
       link: "/category/pot",
     },
     {
@@ -40,7 +40,7 @@ const Home = () => {
       image: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
-      action: "Shop Bouquets",
+      buttonText: "Shop Bouquets",
       link: "/category/bouquet",
     },
     {
@@ -48,7 +48,7 @@ const Home = () => {
       image: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
       title: "Decorative Flowers",
       description: "Add a touch of nature to your home decor.",
-      action: "Shop Flowers",
+      buttonText: "Shop Flowers",
       link: "/category/flowers",
     },
   ];
