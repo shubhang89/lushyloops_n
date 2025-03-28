@@ -1,6 +1,6 @@
 
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { products, categories } from "@/data/products";
 import ProductGrid from "@/components/ProductGrid";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +12,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Shop = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -20,13 +21,17 @@ const Shop = () => {
   // Get query params
   const queryParams = new URLSearchParams(location.search);
   const categoryFromUrl = queryParams.get("category");
+  const searchFromUrl = queryParams.get("search");
   
-  // Set category from URL if present
-  React.useEffect(() => {
+  // Set category and search from URL if present
+  useEffect(() => {
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
     }
-  }, [categoryFromUrl]);
+    if (searchFromUrl) {
+      setSearchTerm(searchFromUrl);
+    }
+  }, [categoryFromUrl, searchFromUrl]);
 
   // Filter products based on search, category, and price range
   const filteredProducts = products.filter((product) => {
@@ -46,10 +51,40 @@ const Shop = () => {
 
   const handleCategoryChange = (categoryId: string | null) => {
     setSelectedCategory(categoryId);
+    
+    // Update URL without full page reload
+    const newParams = new URLSearchParams(location.search);
+    if (categoryId) {
+      newParams.set("category", categoryId);
+    } else {
+      newParams.delete("category");
+    }
+    
+    navigate({
+      pathname: location.pathname,
+      search: newParams.toString()
+    }, { replace: true });
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
+  };
+  
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Update URL without full page reload
+    const newParams = new URLSearchParams(location.search);
+    if (searchTerm) {
+      newParams.set("search", searchTerm);
+    } else {
+      newParams.delete("search");
+    }
+    
+    navigate({
+      pathname: location.pathname,
+      search: newParams.toString()
+    }, { replace: true });
   };
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -65,6 +100,9 @@ const Shop = () => {
     setSearchTerm("");
     setSelectedCategory(null);
     setPriceRange([0, 100]);
+    
+    // Clear URL params
+    navigate(location.pathname);
   };
 
   const maxPrice = Math.max(...products.map(product => product.price));
@@ -96,8 +134,8 @@ const Shop = () => {
         <h3 className="font-medium mb-3">Price Range</h3>
         <div className="space-y-4">
           <div className="flex justify-between">
-            <span>${priceRange[0].toFixed(2)}</span>
-            <span>${priceRange[1].toFixed(2)}</span>
+            <span>₹{priceRange[0].toFixed(2)}</span>
+            <span>₹{priceRange[1].toFixed(2)}</span>
           </div>
           <div className="flex flex-col space-y-2">
             <input
@@ -162,7 +200,7 @@ const Shop = () => {
         {/* Main content */}
         <div className={`${isMobile ? 'w-full' : 'md:w-3/4 lg:w-4/5'}`}>
           <div className="mb-6">
-            <div className="relative">
+            <form onSubmit={handleSearchSubmit} className="relative">
               <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
               <Input
                 type="search"
@@ -171,7 +209,7 @@ const Shop = () => {
                 value={searchTerm}
                 onChange={handleSearchChange}
               />
-            </div>
+            </form>
           </div>
 
           {/* Active filters */}
@@ -182,7 +220,7 @@ const Shop = () => {
                   {categories.find(c => c.id === selectedCategory)?.name}
                   <button 
                     className="ml-2" 
-                    onClick={() => setSelectedCategory(null)}
+                    onClick={() => handleCategoryChange(null)}
                   >
                     &times;
                   </button>
@@ -193,7 +231,15 @@ const Shop = () => {
                   Search: {searchTerm}
                   <button 
                     className="ml-2" 
-                    onClick={() => setSearchTerm("")}
+                    onClick={() => {
+                      setSearchTerm("");
+                      const newParams = new URLSearchParams(location.search);
+                      newParams.delete("search");
+                      navigate({
+                        pathname: location.pathname,
+                        search: newParams.toString()
+                      }, { replace: true });
+                    }}
                   >
                     &times;
                   </button>
@@ -201,7 +247,7 @@ const Shop = () => {
               )}
               {(priceRange[0] > 0 || priceRange[1] < maxPrice) && (
                 <Badge variant="secondary" className="px-3 py-1">
-                  Price: ${priceRange[0].toFixed(2)} - ${priceRange[1].toFixed(2)}
+                  Price: ₹{priceRange[0].toFixed(2)} - ₹{priceRange[1].toFixed(2)}
                   <button 
                     className="ml-2" 
                     onClick={() => setPriceRange([0, maxPrice])}

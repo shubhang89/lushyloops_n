@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { categories } from "@/data/products";
+import { motion } from "framer-motion";
 
 const FeaturedCategories = () => {
   // Images for each category
@@ -27,11 +28,11 @@ const FeaturedCategories = () => {
                 <img
                   src={categoryImages[category.id as keyof typeof categoryImages]}
                   alt={category.name}
-                  className="w-full h-full object-contain p-4"
+                  className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-beige-300 text-center py-3 px-4 transform transition-transform group-hover:translate-y-0 text-foreground font-medium">
+              <div className="absolute bottom-0 left-0 right-0 bg-beige-300 text-center py-3 px-4 text-foreground font-medium transition-transform duration-300 group-hover:bg-beige-400">
                 {category.name}
               </div>
             </Link>
