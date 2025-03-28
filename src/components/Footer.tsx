@@ -1,10 +1,12 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Mail, Phone } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Phone, Heart, ExternalLink } from "lucide-react";
 import { addSubscriber } from "@/data/subscribers";
 import { toast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,52 +34,84 @@ const Footer = () => {
     }
   };
 
+  const socialLinks = [
+    {
+      name: "Instagram",
+      icon: <Instagram size={20} />,
+      url: "https://www.instagram.com/lushyloops_?igsh=b3R1bjl3NnFmM3N0",
+    },
+    {
+      name: "Facebook",
+      icon: <Facebook size={20} />,
+      url: "https://www.facebook.com/share/15zQKSwmBt/?mibextid=wwXIfr",
+    },
+    {
+      name: "Twitter",
+      icon: <Twitter size={20} />,
+      url: "https://x.com/?lang=en-in",
+    },
+  ];
+
   return (
-    <footer className="bg-beige-100 text-foreground">
-      <div className="container mx-auto px-4 py-10">
+    <footer className="bg-gradient-to-r from-beige-50 to-beige-100 text-foreground">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">About LushyLoops</h3>
-            <p className="text-sm">
+            <h3 className="text-xl font-semibold">About LushyLoops</h3>
+            <p className="text-sm leading-relaxed">
               LushyLoops offers handcrafted crochet items made with love and care.
-              Each item is unique and made to bring joy to your everyday life.
+              Each piece tells a story and brings a touch of warmth to your everyday life.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-beige-500 transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="hover:text-beige-500 transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="hover:text-beige-500 transition-colors">
-                <Twitter size={20} />
-              </a>
+            <div className="flex space-x-4 mt-6">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-beige-600 transition-colors duration-300 flex items-center justify-center bg-beige-200 p-2 rounded-full"
+                  whileHover={{ scale: 1.1, backgroundColor: "#f0e6d2" }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-xl font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="hover:text-beige-500 transition-colors">
-                  Home
+                <Link to="/" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link to="/shop" className="hover:text-beige-500 transition-colors">
-                  Shop All
+                <Link to="/shop" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Shop All</span>
                 </Link>
               </li>
               <li>
-                <Link to="/cart" className="hover:text-beige-500 transition-colors">
-                  Cart
+                <Link to="/cart" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Cart</span>
                 </Link>
               </li>
               <li>
-                <Link to="/wishlist" className="hover:text-beige-500 transition-colors">
-                  Wishlist
+                <Link to="/wishlist" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Wishlist</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>About Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Contact</span>
                 </Link>
               </li>
             </ul>
@@ -85,26 +119,26 @@ const Footer = () => {
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Categories</h3>
+            <h3 className="text-xl font-semibold">Categories</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/category/keychain" className="hover:text-beige-500 transition-colors">
-                  Keychains
+                <Link to="/category/keychain" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Keychains</span>
                 </Link>
               </li>
               <li>
-                <Link to="/category/pot" className="hover:text-beige-500 transition-colors">
-                  Pots & Holders
+                <Link to="/category/pot" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Pots & Holders</span>
                 </Link>
               </li>
               <li>
-                <Link to="/category/bouquet" className="hover:text-beige-500 transition-colors">
-                  Bouquets
+                <Link to="/category/bouquet" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Bouquets</span>
                 </Link>
               </li>
               <li>
-                <Link to="/category/flowers" className="hover:text-beige-500 transition-colors">
-                  Flowers
+                <Link to="/category/flowers" className="hover:text-beige-600 transition-colors duration-200 flex items-center gap-1">
+                  <span>Flowers</span>
                 </Link>
               </li>
             </ul>
@@ -112,19 +146,19 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <h3 className="text-xl font-semibold">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center">
-                <Mail size={16} className="mr-2" />
+                <Mail size={16} className="mr-2 text-beige-500" />
                 <span>hello@lushyloops.com</span>
               </li>
               <li className="flex items-center">
-                <Phone size={16} className="mr-2" />
+                <Phone size={16} className="mr-2 text-beige-500" />
                 <span>+91 9876543210</span>
               </li>
             </ul>
             <div className="mt-4">
-              <h4 className="text-sm font-medium mb-2">Newsletter</h4>
+              <h4 className="text-sm font-medium mb-2">Subscribe to our newsletter</h4>
               <form onSubmit={handleSubscribe} className="flex">
                 <Input
                   type="email"
@@ -133,18 +167,21 @@ const Footer = () => {
                   className="flex-1 px-3 py-2 text-sm border border-beige-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-beige-400"
                   required
                 />
-                <button 
+                <Button 
                   type="submit" 
-                  className="bg-beige-300 px-3 py-2 text-sm font-medium rounded-r-md hover:bg-beige-400 transition-colors"
+                  className="bg-beige-400 px-3 py-2 text-sm font-medium rounded-r-md hover:bg-beige-500 transition-colors"
                 >
                   Subscribe
-                </button>
+                </Button>
               </form>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-beige-200 mt-8 pt-6 text-center text-sm">
+        <div className="border-t border-beige-200 mt-10 pt-8 text-center text-sm">
+          <p className="flex items-center justify-center gap-1 mb-2">
+            <span>Handcrafted with</span> <Heart size={14} className="text-beige-500 fill-beige-500" /> <span>by LushyLoops</span>
+          </p>
           <p>
             &copy; {new Date().getFullYear()} LushyLoops. All rights reserved.
           </p>

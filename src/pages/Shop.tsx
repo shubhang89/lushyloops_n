@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { products, categories } from "@/data/products";
@@ -9,6 +8,7 @@ import { Search, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Slider from "@/components/ui/slider";
 
 const Shop = () => {
   const location = useLocation();
@@ -18,12 +18,10 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
 
-  // Get query params
   const queryParams = new URLSearchParams(location.search);
   const categoryFromUrl = queryParams.get("category");
   const searchFromUrl = queryParams.get("search");
   
-  // Set category and search from URL if present
   useEffect(() => {
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
@@ -33,17 +31,13 @@ const Shop = () => {
     }
   }, [categoryFromUrl, searchFromUrl]);
 
-  // Filter products based on search, category, and price range
   const filteredProducts = products.filter((product) => {
-    // Search term filter
     const matchesSearch = searchTerm === "" || 
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       product.description.toLowerCase().includes(searchTerm.toLowerCase());
     
-    // Category filter
     const matchesCategory = selectedCategory === null || product.category === selectedCategory;
     
-    // Price filter
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
     
     return matchesSearch && matchesCategory && matchesPrice;
@@ -52,7 +46,6 @@ const Shop = () => {
   const handleCategoryChange = (categoryId: string | null) => {
     setSelectedCategory(categoryId);
     
-    // Update URL without full page reload
     const newParams = new URLSearchParams(location.search);
     if (categoryId) {
       newParams.set("category", categoryId);
@@ -73,7 +66,6 @@ const Shop = () => {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Update URL without full page reload
     const newParams = new URLSearchParams(location.search);
     if (searchTerm) {
       newParams.set("search", searchTerm);
@@ -101,7 +93,6 @@ const Shop = () => {
     setSelectedCategory(null);
     setPriceRange([0, 100]);
     
-    // Clear URL params
     navigate(location.pathname);
   };
 
@@ -133,28 +124,7 @@ const Shop = () => {
       <div>
         <h3 className="font-medium mb-3">Price Range</h3>
         <div className="space-y-4">
-          <div className="flex justify-between">
-            <span>₹{priceRange[0].toFixed(2)}</span>
-            <span>₹{priceRange[1].toFixed(2)}</span>
-          </div>
-          <div className="flex flex-col space-y-2">
-            <input
-              type="range"
-              min="0"
-              max={maxPrice}
-              value={priceRange[0]}
-              onChange={(e) => handlePriceChange(e, 0)}
-              className="w-full"
-            />
-            <input
-              type="range"
-              min="0"
-              max={maxPrice}
-              value={priceRange[1]}
-              onChange={(e) => handlePriceChange(e, 1)}
-              className="w-full"
-            />
-          </div>
+          <PriceRangeSlider minPrice={0} maxPrice={maxPrice} onPriceChange={setPriceRange} />
         </div>
       </div>
 
@@ -190,14 +160,12 @@ const Shop = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Sidebar filters for desktop */}
         {!isMobile && (
           <div className="md:w-1/4 lg:w-1/5">
             <FiltersContent />
           </div>
         )}
 
-        {/* Main content */}
         <div className={`${isMobile ? 'w-full' : 'md:w-3/4 lg:w-4/5'}`}>
           <div className="mb-6">
             <form onSubmit={handleSearchSubmit} className="relative">
@@ -212,7 +180,6 @@ const Shop = () => {
             </form>
           </div>
 
-          {/* Active filters */}
           {(selectedCategory || searchTerm || priceRange[0] > 0 || priceRange[1] < maxPrice) && (
             <div className="flex flex-wrap gap-2 mb-4">
               {selectedCategory && (
@@ -266,7 +233,6 @@ const Shop = () => {
             </div>
           )}
 
-          {/* Results count */}
           <div className="mb-6 text-muted-foreground">
             Showing {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
           </div>
@@ -279,3 +245,34 @@ const Shop = () => {
 };
 
 export default Shop;
+
+const PriceRangeSlider = ({ minPrice, maxPrice, onPriceChange }: PriceRangeSliderProps) => {
+  const [range, setRange] = useState<[number, number]>([0, maxPrice]);
+
+  useEffect(() => {
+    setRange([0, maxPrice]);
+    onPriceChange([0, maxPrice]);
+  }, [maxPrice, onPriceChange]);
+
+  const handleRangeChange = (newRange: [number, number]) => {
+    setRange(newRange);
+    onPriceChange(newRange);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <span>₹{range[0]}</span>
+        <span>₹{range[1]}</span>
+      </div>
+      <Slider
+        defaultValue={[0, maxPrice]}
+        value={range}
+        max={maxPrice}
+        step={10}
+        onValueChange={(value) => handleRangeChange(value as [number, number])}
+        className="w-full"
+      />
+    </div>
+  );
+};
