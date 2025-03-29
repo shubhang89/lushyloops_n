@@ -37,7 +37,11 @@ const Footer = () => {
   };
 
   const handleCategoryClick = (categoryId: string) => {
+    // Navigate to the category page
     navigate(`/category/${categoryId}`);
+    
+    // Scroll to top to ensure the page starts from the beginning
+    window.scrollTo(0, 0);
   };
 
   const socialLinks = [

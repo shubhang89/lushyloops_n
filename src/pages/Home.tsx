@@ -14,7 +14,7 @@ const Home = () => {
   const slides = [
     {
       id: "1",
-      image: "/lovable-uploads/1.jpeg",
+      image: "/public/lovable-uploads/1.jpeg",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
       buttonText: "Shop Now",
@@ -22,7 +22,7 @@ const Home = () => {
     },
     {
       id: "2",
-      image: "/lovable-uploads/2.jpeg",
+      image: "/public/lovable-uploads/2.jpeg",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
       buttonText: "Shop Keychains",
@@ -30,7 +30,7 @@ const Home = () => {
     },
     {
       id: "3",
-      image: "/lovable-uploads/3.jpeg",
+      image: "/public/lovable-uploads/3.jpeg",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
       buttonText: "Shop Pots",
@@ -38,7 +38,7 @@ const Home = () => {
     },
     {
       id: "4",
-      image: "/lovable-uploads/4.jpeg",
+      image: "/public/lovable-uploads/4.jpeg",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
       buttonText: "Shop Bouquets",

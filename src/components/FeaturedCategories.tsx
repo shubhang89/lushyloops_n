@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 const FeaturedCategories = () => {
   // Images for each category
   const categoryImages = {
-    keychain: "/lovable-uploads/k1.jpeg",
-    pot: "/lovable-uploads/p1.jpeg",
-    bouquet: "/lovable-uploads/b1.jpeg",
-    flowers: "/lovable-uploads/f1.jpeg",
+    keychain: "/public/lovable-uploads/k1.jpeg",
+    pot: "/public/lovable-uploads/p1.jpeg",
+    bouquet: "/public/lovable-uploads/b1.jpeg",
+    flowers: "/public/lovable-uploads/f1.jpeg",
   };
 
   // Animation variants
