@@ -8,7 +8,14 @@ import { Search, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
-import Slider from "@/components/ui/slider";
+import { Slider } from "@/components/ui/slider";
+
+// Define the missing PriceRangeSliderProps interface
+interface PriceRangeSliderProps {
+  minPrice: number;
+  maxPrice: number;
+  onPriceChange: (range: [number, number]) => void;
+}
 
 const Shop = () => {
   const location = useLocation();
@@ -16,7 +23,10 @@ const Shop = () => {
   const isMobile = useIsMobile();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
+  
+  // Get max price for setting default price range
+  const maxPrice = Math.max(...products.map(product => product.price));
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
 
   const queryParams = new URLSearchParams(location.search);
   const categoryFromUrl = queryParams.get("category");
@@ -91,12 +101,10 @@ const Shop = () => {
   const clearFilters = () => {
     setSearchTerm("");
     setSelectedCategory(null);
-    setPriceRange([0, 100]);
+    setPriceRange([0, maxPrice]);
     
     navigate(location.pathname);
   };
-
-  const maxPrice = Math.max(...products.map(product => product.price));
 
   const FiltersContent = () => (
     <div className="space-y-6">
