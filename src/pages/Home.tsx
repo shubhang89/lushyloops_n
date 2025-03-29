@@ -9,13 +9,12 @@ import FeaturedCategories from "@/components/FeaturedCategories";
 import Newsletter from "@/components/Newsletter";
 import { getFeaturedProducts } from "@/data/products";
 import { motion } from "framer-motion";
-import { siteImages } from "@/utils/siteImages";
 
 const Home = () => {
   const slides = [
     {
       id: "1",
-      image: siteImages.slideshow.slide1,
+      image: "/lovable-uploads/1.jpeg",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
       buttonText: "Shop Now",
@@ -23,7 +22,7 @@ const Home = () => {
     },
     {
       id: "2",
-      image: siteImages.slideshow.slide2,
+      image: "/lovable-uploads/2.jpeg",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
       buttonText: "Shop Keychains",
@@ -31,7 +30,7 @@ const Home = () => {
     },
     {
       id: "3",
-      image: siteImages.slideshow.slide3,
+      image: "/lovable-uploads/3.jpeg",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
       buttonText: "Shop Pots",
@@ -39,7 +38,7 @@ const Home = () => {
     },
     {
       id: "4",
-      image: siteImages.slideshow.slide4,
+      image: "/lovable-uploads/4.jpeg",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
       buttonText: "Shop Bouquets",
@@ -47,75 +46,27 @@ const Home = () => {
     },
     {
       id: "5",
-      image: siteImages.slideshow.slide5,
-      title: "Premium Crochet Materials",
-      description: "We use only the finest yarns and materials for our creations.",
-      buttonText: "Learn More",
-      link: "/about",
-    },
-    {
-      id: "6",
-      image: siteImages.slideshow.slide6,
-      title: "Handmade Crochet Toys",
-      description: "Adorable companions crafted with love and attention to detail.",
-      buttonText: "Explore Toys",
-      link: "/shop",
-    },
-    {
-      id: "7",
-      image: siteImages.slideshow.slide7,
-      title: "Elegant Table Decor",
-      description: "Add a touch of handcrafted elegance to your home.",
-      buttonText: "Shop Home Decor",
-      link: "/shop",
-    },
-    {
-      id: "8",
-      image: siteImages.slideshow.slide8,
-      title: "Cozy Home Accessories",
-      description: "Bring warmth and texture to your living space.",
-      buttonText: "Browse Collection",
-      link: "/shop",
-    },
-    {
-      id: "9",
-      image: siteImages.slideshow.slide9,
-      title: "Custom Crochet Projects",
-      description: "We create personalized items tailored to your needs.",
-      buttonText: "Contact Us",
-      link: "/contact",
-    },
-    {
-      id: "10",
-      image: siteImages.slideshow.slide10,
+      image: "/lovable-uploads/k1.jpeg",
       title: "Cute Crochet Keychains",
       description: "Add a touch of handmade charm to your everyday essentials.",
       buttonText: "View Collection",
       link: "/category/keychain",
     },
     {
-      id: "11",
-      image: siteImages.slideshow.slide11,
+      id: "6",
+      image: "/lovable-uploads/p1.jpeg",
       title: "Decorative Plant Holders",
       description: "Elegant crochet pots to showcase your favorite plants.",
       buttonText: "View Collection",
       link: "/category/pot",
     },
     {
-      id: "12",
-      image: siteImages.slideshow.slide12,
+      id: "7",
+      image: "/lovable-uploads/b1.jpeg",
       title: "Crochet Flower Bouquets",
       description: "Everlasting bouquets that bring perpetual joy to any space.",
       buttonText: "View Collection",
       link: "/category/bouquet",
-    },
-    {
-      id: "13",
-      image: siteImages.slideshow.slide9,
-      title: "Join Our Crochet Community",
-      description: "Learn, share and connect with fellow crochet enthusiasts.",
-      buttonText: "Join Now",
-      link: "/contact",
     },
   ];
 
