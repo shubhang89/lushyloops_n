@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/store/CartContext";
 
 const Checkout = () => {
-  const { cart, clearCart } = useCart();
+  const { items, clearCart, getTotalPrice } = useCart();
   const [formSubmitted, setFormSubmitted] = useState(false);
   
   // Animation variants
@@ -34,10 +34,8 @@ const Checkout = () => {
   // Replace this with your actual Google Form embed URL
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScQZBB1zy1D6NIluLgZGZzxzKlcM1R_yJyfaD3-9yvI-LQZ6w/viewform?embedded=true";
   
-  // Calculate cart total
-  const cartTotal = cart.reduce((total, item) => {
-    return total + (item.product.price * item.quantity);
-  }, 0);
+  // Calculate cart total using the getTotalPrice function from context
+  const cartTotal = getTotalPrice();
 
   const handleOrderComplete = () => {
     // Clear the cart after successful checkout
@@ -62,12 +60,12 @@ const Checkout = () => {
           >
             <h2 className="text-2xl font-bold mb-6 border-b pb-4">Order Summary</h2>
             
-            {cart.length === 0 ? (
+            {items.length === 0 ? (
               <p className="text-gray-500">Your cart is empty</p>
             ) : (
               <>
                 <div className="space-y-4 mb-6">
-                  {cart.map((item) => (
+                  {items.map((item) => (
                     <motion.div 
                       key={item.product.id} 
                       className="flex justify-between items-center"
@@ -75,7 +73,7 @@ const Checkout = () => {
                     >
                       <div className="flex items-center">
                         <img 
-                          src={item.product.image} 
+                          src={item.product.imageUrl} 
                           alt={item.product.name} 
                           className="w-16 h-16 object-cover rounded mr-4"
                         />
