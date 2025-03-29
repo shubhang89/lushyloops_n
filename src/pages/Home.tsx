@@ -14,7 +14,7 @@ const Home = () => {
   const slides = [
     {
       id: "1",
-      image: "/public/lovable-uploads/1.jpeg",
+      image: "/lovable-uploads/1.jpeg",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
       buttonText: "Shop Now",
@@ -22,7 +22,7 @@ const Home = () => {
     },
     {
       id: "2",
-      image: "/public/lovable-uploads/2.jpeg",
+      image: "/lovable-uploads/2.jpeg",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
       buttonText: "Shop Keychains",
@@ -30,7 +30,7 @@ const Home = () => {
     },
     {
       id: "3",
-      image: "/public/lovable-uploads/3.jpeg",
+      image: "/lovable-uploads/3.jpeg",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
       buttonText: "Shop Pots",
@@ -38,10 +38,34 @@ const Home = () => {
     },
     {
       id: "4",
-      image: "/public/lovable-uploads/4.jpeg",
+      image: "/lovable-uploads/4.jpeg",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
       buttonText: "Shop Bouquets",
+      link: "/category/bouquet",
+    },
+    {
+      id: "5",
+      image: "/lovable-uploads/k1.jpeg",
+      title: "Cute Crochet Keychains",
+      description: "Add a touch of handmade charm to your everyday essentials.",
+      buttonText: "View Collection",
+      link: "/category/keychain",
+    },
+    {
+      id: "6",
+      image: "/lovable-uploads/p1.jpeg",
+      title: "Decorative Plant Holders",
+      description: "Elegant crochet pots to showcase your favorite plants.",
+      buttonText: "View Collection",
+      link: "/category/pot",
+    },
+    {
+      id: "7",
+      image: "/lovable-uploads/b1.jpeg",
+      title: "Crochet Flower Bouquets",
+      description: "Everlasting bouquets that bring perpetual joy to any space.",
+      buttonText: "View Collection",
       link: "/category/bouquet",
     },
   ];
@@ -77,7 +101,13 @@ const Home = () => {
       <FeaturedCategories />
 
       {/* Featured Products */}
-      <div className="container mx-auto px-4 py-12">
+      <motion.div 
+        className="container mx-auto px-4 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <motion.div 
           className="flex justify-between items-center mb-8"
           initial="hidden"
@@ -85,10 +115,18 @@ const Home = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
-          <motion.h2 className="text-3xl font-bold" variants={itemVariants}>
+          <motion.h2 
+            className="text-3xl font-bold" 
+            variants={itemVariants}
+            whileHover={{ scale: 1.05, color: "#967a4c" }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             Featured Products
           </motion.h2>
-          <motion.div variants={itemVariants}>
+          <motion.div 
+            variants={itemVariants}
+            whileHover={{ scale: 1.1 }}
+          >
             <Link to="/shop">
               <Button variant="outline" className="flex items-center gap-2 group">
                 View All <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -97,7 +135,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
         <ProductGrid products={getFeaturedProducts()} />
-      </div>
+      </motion.div>
 
       {/* Newsletter Section */}
       <Newsletter />
@@ -112,18 +150,37 @@ const Home = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={containerVariants}
           >
-            <motion.h2 className="text-3xl font-bold mb-6" variants={itemVariants}>
+            <motion.h2 
+              className="text-3xl font-bold mb-6" 
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, color: "#967a4c" }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               About LushyLoops
             </motion.h2>
-            <motion.p className="text-lg mb-6" variants={itemVariants}>
+            <motion.p 
+              className="text-lg mb-6" 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
               LushyLoops was born from a passion for crochet and a love for creating unique, 
               handcrafted items that bring joy and warmth to everyday life.
             </motion.p>
-            <motion.p className="text-lg mb-8" variants={itemVariants}>
+            <motion.p 
+              className="text-lg mb-8" 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
               Each item is carefully crafted with attention to detail, using high-quality 
               materials to ensure durability and beauty that lasts.
             </motion.p>
-            <motion.div variants={itemVariants}>
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Link to="/shop">
                 <Button className="btn-primary px-8 py-6 hover:scale-105 transition-transform">
                   Explore Our Collection

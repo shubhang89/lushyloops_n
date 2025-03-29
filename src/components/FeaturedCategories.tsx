@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 const FeaturedCategories = () => {
   // Images for each category
   const categoryImages = {
-    keychain: "/public/lovable-uploads/k1.jpeg",
-    pot: "/public/lovable-uploads/p1.jpeg",
-    bouquet: "/public/lovable-uploads/b1.jpeg",
-    flowers: "/public/lovable-uploads/f1.jpeg",
+    keychain: "/lovable-uploads/k1.jpeg",
+    pot: "/lovable-uploads/p1.jpeg",
+    bouquet: "/lovable-uploads/b1.jpeg",
+    flowers: "/lovable-uploads/f1.jpeg",
   };
 
   // Animation variants
@@ -44,6 +44,7 @@ const FeaturedCategories = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.05, color: "#967a4c" }}
         >
           Shop By Category
         </motion.h2>
@@ -53,6 +54,7 @@ const FeaturedCategories = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          whileHover={{ y: -5 }}
         >
           Explore our unique handcrafted collections, each made with love and attention to detail
         </motion.p>
@@ -68,7 +70,8 @@ const FeaturedCategories = () => {
             <motion.div
               key={category.id}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -10, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <Link
                 to={`/category/${category.id}`}
@@ -80,7 +83,10 @@ const FeaturedCategories = () => {
                     alt={category.name}
                     className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300" />
+                  <motion.div 
+                    className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300"
+                    whileHover={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+                  />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-beige-300 text-center py-4 px-4 text-foreground font-medium transition-all duration-300 group-hover:bg-beige-400">
                   <span className="relative z-10">{category.name}</span>
