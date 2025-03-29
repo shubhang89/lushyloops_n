@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -32,6 +33,28 @@ const Contact = () => {
     }, 1500);
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Breadcrumbs */}
@@ -43,11 +66,24 @@ const Contact = () => {
         <span className="text-foreground font-medium">Contact</span>
       </div>
 
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center">Contact Us</h1>
+      <motion.div 
+        className="max-w-5xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.h1 
+          className="text-3xl font-bold mb-6 text-center" 
+          variants={itemVariants}
+        >
+          Contact Us
+        </motion.h1>
         
         <div className="flex flex-col md:flex-row gap-12 mb-12">
-          <div className="md:w-1/2">
+          <motion.div 
+            className="md:w-1/2"
+            variants={itemVariants}
+          >
             <h2 className="text-2xl font-semibold mb-6">Get In Touch</h2>
             <p className="text-gray-700 mb-8">
               Have a question about our products or want to place a custom order? 
@@ -55,15 +91,23 @@ const Contact = () => {
             </p>
             
             <div className="space-y-6">
-              <div className="flex items-start">
+              <motion.div 
+                className="flex items-start"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <MapPin className="h-5 w-5 text-beige-500 mr-4 mt-1" />
                 <div>
                   <h3 className="font-medium">Our Location</h3>
-                  <p className="text-gray-700">123 Crochet Lane, Craftsville, India 400001</p>
+                  <p className="text-gray-700">Vidyanagar Hubli, Karnataka, India</p>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-start">
+              <motion.div 
+                className="flex items-start"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <Mail className="h-5 w-5 text-beige-500 mr-4 mt-1" />
                 <div>
                   <h3 className="font-medium">Email Us</h3>
@@ -73,20 +117,33 @@ const Contact = () => {
                     </a>
                   </p>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-start">
+              <motion.div 
+                className="flex items-start"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <Phone className="h-5 w-5 text-beige-500 mr-4 mt-1" />
                 <div>
                   <h3 className="font-medium">Call Us</h3>
                   <p className="text-gray-700">+91-9164800703</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="md:w-1/2">
-            <form onSubmit={handleSubmit} className="bg-beige-50 p-6 rounded-lg shadow-sm">
+          <motion.div 
+            className="md:w-1/2"
+            variants={itemVariants}
+          >
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="bg-beige-50 p-6 rounded-lg shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
               <div className="mb-4">
                 <label htmlFor="name" className="block mb-2 font-medium">
                   Your Name
@@ -131,22 +188,27 @@ const Contact = () => {
                 />
               </div>
               
-              <Button 
-                type="submit" 
-                className="w-full bg-beige-300 hover:bg-beige-400 text-foreground"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </div>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-beige-300 hover:bg-beige-400 text-foreground"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </motion.div>
+            </motion.form>
+          </motion.div>
         </div>
         
-        <div className="mb-12">
+        <motion.div 
+          className="mb-12"
+          variants={itemVariants}
+        >
           <h2 className="text-2xl font-semibold mb-6 text-center">Visit Our Shop</h2>
           <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.03900799053!2d72.88118615!3d19.08205745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1656565400000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15373.671033266923!2d75.1238946!3d15.359893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d7d9810d0a75%3A0xd8e4ee167f307f77!2sVidya%20Nagar%2C%20Hubballi%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1656565400000!5m2!1sen!2sin" 
               width="100%" 
               height="450" 
               style={{ border: 0 }} 
@@ -157,8 +219,8 @@ const Contact = () => {
               className="w-full h-full"
             ></iframe>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 const FeaturedCategories = () => {
   // Images for each category
   const categoryImages = {
-    keychain: "/lovable-uploads/1899aebd-bf21-4eb6-81f5-2f5e58af5138.png",
-    pot: "/lovable-uploads/69327515-570a-4348-98e0-fa3c08266db2.png",
-    bouquet: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
-    flowers: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
+    keychain: "/lovable-uploads/k1.jpeg",
+    pot: "/lovable-uploads/p1.jpeg",
+    bouquet: "/lovable-uploads/b1.jpeg",
+    flowers: "/lovable-uploads/f1.jpeg",
   };
 
   // Animation variants
@@ -38,10 +38,24 @@ const FeaturedCategories = () => {
   return (
     <div className="py-16 bg-gradient-to-b from-white to-beige-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Shop By Category</h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <motion.h2 
+          className="text-3xl md:text-4xl font-bold text-center mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Shop By Category
+        </motion.h2>
+        <motion.p 
+          className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           Explore our unique handcrafted collections, each made with love and attention to detail
-        </p>
+        </motion.p>
         
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"

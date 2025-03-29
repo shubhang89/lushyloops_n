@@ -8,12 +8,13 @@ import ProductGrid from "@/components/ProductGrid";
 import FeaturedCategories from "@/components/FeaturedCategories";
 import Newsletter from "@/components/Newsletter";
 import { getFeaturedProducts } from "@/data/products";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const slides = [
     {
       id: "1",
-      image: "/lovable-uploads/ed5b9d3e-7b7b-4375-ab0c-1c491b9a0bb6.png",
+      image: "/lovable-uploads/1.jpeg",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
       buttonText: "Shop Now",
@@ -21,7 +22,7 @@ const Home = () => {
     },
     {
       id: "2",
-      image: "/lovable-uploads/6f7bd96b-4657-4691-8cf5-b556328703df.png",
+      image: "/lovable-uploads/2.jpeg",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
       buttonText: "Shop Keychains",
@@ -29,7 +30,7 @@ const Home = () => {
     },
     {
       id: "3",
-      image: "/lovable-uploads/0cb4548b-6d86-4a20-9349-b419e0ca6852.png",
+      image: "/lovable-uploads/3.jpeg",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
       buttonText: "Shop Pots",
@@ -37,13 +38,35 @@ const Home = () => {
     },
     {
       id: "4",
-      image: "/lovable-uploads/ef0fe840-3b72-4a13-9c63-a6fcb2ba635d.png",
+      image: "/lovable-uploads/4.jpeg",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
       buttonText: "Shop Bouquets",
       link: "/category/bouquet",
     },
   ];
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
 
   return (
     <div>
@@ -55,14 +78,24 @@ const Home = () => {
 
       {/* Featured Products */}
       <div className="container mx-auto px-4 py-12">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Featured Products</h2>
-          <Link to="/shop">
-            <Button variant="outline" className="flex items-center gap-2">
-              View All <ArrowRight size={16} />
-            </Button>
-          </Link>
-        </div>
+        <motion.div 
+          className="flex justify-between items-center mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-3xl font-bold" variants={itemVariants}>
+            Featured Products
+          </motion.h2>
+          <motion.div variants={itemVariants}>
+            <Link to="/shop">
+              <Button variant="outline" className="flex items-center gap-2 group">
+                View All <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
         <ProductGrid products={getFeaturedProducts()} />
       </div>
 
@@ -72,22 +105,32 @@ const Home = () => {
       {/* About Section */}
       <div className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">About LushyLoops</h2>
-            <p className="text-lg mb-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+          >
+            <motion.h2 className="text-3xl font-bold mb-6" variants={itemVariants}>
+              About LushyLoops
+            </motion.h2>
+            <motion.p className="text-lg mb-6" variants={itemVariants}>
               LushyLoops was born from a passion for crochet and a love for creating unique, 
               handcrafted items that bring joy and warmth to everyday life.
-            </p>
-            <p className="text-lg mb-8">
+            </motion.p>
+            <motion.p className="text-lg mb-8" variants={itemVariants}>
               Each item is carefully crafted with attention to detail, using high-quality 
               materials to ensure durability and beauty that lasts.
-            </p>
-            <Link to="/shop">
-              <Button className="btn-primary px-8 py-6">
-                Explore Our Collection
-              </Button>
-            </Link>
-          </div>
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link to="/shop">
+                <Button className="btn-primary px-8 py-6 hover:scale-105 transition-transform">
+                  Explore Our Collection
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>
