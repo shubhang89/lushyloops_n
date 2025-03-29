@@ -51,6 +51,31 @@ export const exportSubscribersAsCSV = (): string => {
   return header + rows;
 };
 
+// Convert subscribers data to Excel format and trigger download
+export const downloadSubscribersAsExcel = () => {
+  // Creating CSV content
+  const csvContent = exportSubscribersAsCSV();
+  
+  // Creating a Blob with the CSV content
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  
+  // Creating a URL for the Blob
+  const url = URL.createObjectURL(blob);
+  
+  // Creating a temporary link to trigger the download
+  const link = document.createElement('a');
+  link.href = url;
+  link.setAttribute('download', `subscribers_${new Date().toISOString().split('T')[0]}.csv`);
+  document.body.appendChild(link);
+  
+  // Triggering the download
+  link.click();
+  
+  // Cleaning up
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
+
 // For demonstration purposes - initialize with sample data
 if (process.env.NODE_ENV === 'development') {
   addSubscriber('sample1@example.com');

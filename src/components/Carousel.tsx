@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 
 interface Slide {
   image: string;
@@ -23,6 +24,12 @@ const Carousel: React.FC<CarouselProps> = ({
   interval = 5000,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const location = useLocation();
+
+  // Reset to first slide when route changes
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!autoPlay) return;

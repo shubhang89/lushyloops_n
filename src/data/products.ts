@@ -17,7 +17,7 @@ export const products: Product[] = [
     description: "A cute crocheted flower keychain, perfect as a small gift or accessory for your bag.",
     price: 899,
     category: "keychain",
-    imageUrl: "/lovable-uploads/26d56a24-6d8e-4e6f-b4ce-13aeebb2d0b9.png",
+    imageUrl: "/lovable-uploads/cd3b3e98-cb50-498f-8a0d-79bf31f9ff5a.png",
     inventoryCount: 15,
     featured: true
   },
@@ -27,7 +27,7 @@ export const products: Product[] = [
     description: "Hand-crocheted plant pot, perfect for small succulents or air plants.",
     price: 1599,
     category: "pot",
-    imageUrl: "/lovable-uploads/69327515-570a-4348-98e0-fa3c08266db2.png",
+    imageUrl: "/lovable-uploads/d86a826b-11fe-4581-9ad3-83c9598e9bad.png",
     inventoryCount: 8,
     featured: true
   },
@@ -37,7 +37,7 @@ export const products: Product[] = [
     description: "A beautiful bouquet of crocheted wildflowers that will never wilt.",
     price: 2499,
     category: "bouquet",
-    imageUrl: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
+    imageUrl: "/lovable-uploads/06a6c95d-02c6-42cc-8924-8b87a08fd0df.png",
     inventoryCount: 5,
     featured: true
   },
@@ -47,7 +47,7 @@ export const products: Product[] = [
     description: "A cheerful sunflower wall hanging to brighten up any room.",
     price: 1899,
     category: "flowers",
-    imageUrl: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
+    imageUrl: "/lovable-uploads/d443acff-2f67-41c4-af20-cd1d899f7da4.png",
     inventoryCount: 10,
     featured: true
   },
@@ -57,7 +57,7 @@ export const products: Product[] = [
     description: "Set of three adorable animal keychains - bunny, bear, and fox.",
     price: 1499,
     category: "keychain",
-    imageUrl: "/lovable-uploads/29f72034-5856-445c-b845-904f3bb01d94.png",
+    imageUrl: "/lovable-uploads/96f938c7-4d04-4d74-8a15-cbc2a689cf8e.png",
     inventoryCount: 12,
     featured: true
   },
@@ -67,7 +67,7 @@ export const products: Product[] = [
     description: "Macramé style crocheted hanging plant holder, perfect for small to medium pots.",
     price: 1299,
     category: "pot",
-    imageUrl: "/lovable-uploads/e21882d2-7c8a-4131-8cb2-a37b5076ae4e.png",
+    imageUrl: "/lovable-uploads/02206745-4f42-451e-aca5-1f6a5ba300c7.png",
     inventoryCount: 7
   },
   {
@@ -76,7 +76,7 @@ export const products: Product[] = [
     description: "A romantic bouquet of crocheted roses in soft pink and cream colors.",
     price: 2999,
     category: "bouquet",
-    imageUrl: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
+    imageUrl: "/lovable-uploads/089a3acc-7774-403a-81a0-2c0e43a15d4b.png",
     inventoryCount: 4
   },
   {
@@ -85,7 +85,7 @@ export const products: Product[] = [
     description: "Cheerful daisy chain garland, perfect for decorating a child's room.",
     price: 2199,
     category: "flowers",
-    imageUrl: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
+    imageUrl: "/lovable-uploads/27565f35-1ec5-49c0-a8f0-b0c42d0f204f.png",
     inventoryCount: 6
   },
   {
@@ -94,7 +94,7 @@ export const products: Product[] = [
     description: "Personalized initial letter keychain in your choice of colors.",
     price: 999,
     category: "keychain",
-    imageUrl: "/lovable-uploads/1899aebd-bf21-4eb6-81f5-2f5e58af5138.png",
+    imageUrl: "/lovable-uploads/7ec236be-5215-4bbe-839a-0aa10049fcb2.png",
     inventoryCount: 20
   },
   {
@@ -103,7 +103,7 @@ export const products: Product[] = [
     description: "Large decorative crocheted bowl, perfect for holding fruit or as a centerpiece.",
     price: 1999,
     category: "pot",
-    imageUrl: "/lovable-uploads/ca40dff6-9e29-40c0-b398-30d9529e435d.png",
+    imageUrl: "/lovable-uploads/ac3dba37-9762-4566-bb3d-9d53e179ba96.png",
     inventoryCount: 5
   },
   {
@@ -112,7 +112,7 @@ export const products: Product[] = [
     description: "Spring-inspired arrangement of crocheted tulips in various colors.",
     price: 2799,
     category: "bouquet",
-    imageUrl: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
+    imageUrl: "/lovable-uploads/43204493-0c9b-457f-9064-fa8cc99cebc2.png",
     inventoryCount: 3
   },
   {
@@ -121,7 +121,7 @@ export const products: Product[] = [
     description: "Set of three lotus flowers in graduating sizes, beautiful as table decorations.",
     price: 1799,
     category: "flowers",
-    imageUrl: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
+    imageUrl: "/lovable-uploads/319ece52-85c2-4d07-9bf0-3038ecfbed00.png",
     inventoryCount: 8
   }
 ];

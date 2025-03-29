@@ -67,7 +67,11 @@ const Contact = () => {
                 <Mail className="h-5 w-5 text-beige-500 mr-4 mt-1" />
                 <div>
                   <h3 className="font-medium">Email Us</h3>
-                  <p className="text-gray-700">info@lushyloops.com</p>
+                  <p className="text-gray-700">
+                    <a href="mailto:shubhanggangolli2002@gmail.com" className="hover:text-beige-600 transition-colors">
+                      shubhanggangolli2002@gmail.com
+                    </a>
+                  </p>
                 </div>
               </div>
               
@@ -75,7 +79,7 @@ const Contact = () => {
                 <Phone className="h-5 w-5 text-beige-500 mr-4 mt-1" />
                 <div>
                   <h3 className="font-medium">Call Us</h3>
-                  <p className="text-gray-700">+91 9876543210</p>
+                  <p className="text-gray-700">+91-9164800703</p>
                 </div>
               </div>
             </div>

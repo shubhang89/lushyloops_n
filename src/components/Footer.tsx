@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Mail, Phone, Heart, ExternalLink } from "lucide-react";
+import { Instagram, Facebook, Mail, Phone, Heart, ExternalLink } from "lucide-react";
 import { addSubscriber } from "@/data/subscribers";
 import { toast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
@@ -44,11 +44,6 @@ const Footer = () => {
       name: "Facebook",
       icon: <Facebook size={20} />,
       url: "https://www.facebook.com/share/15zQKSwmBt/?mibextid=wwXIfr",
-    },
-    {
-      name: "Twitter",
-      icon: <Twitter size={20} />,
-      url: "https://x.com/?lang=en-in",
     },
   ];
 
@@ -150,11 +145,13 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center">
                 <Mail size={16} className="mr-2 text-beige-500" />
-                <span>hello@lushyloops.com</span>
+                <a href="mailto:shubhanggangolli2002@gmail.com" className="hover:text-beige-600 transition-colors">
+                  shubhanggangolli2002@gmail.com
+                </a>
               </li>
               <li className="flex items-center">
                 <Phone size={16} className="mr-2 text-beige-500" />
-                <span>+91 9876543210</span>
+                <span>+91-9164800703</span>
               </li>
             </ul>
             <div className="mt-4">

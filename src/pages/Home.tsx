@@ -13,7 +13,7 @@ const Home = () => {
   const slides = [
     {
       id: "1",
-      image: "/lovable-uploads/6ffe79d1-a640-4e6c-b8aa-0d439e9cc707.png",
+      image: "/lovable-uploads/ed5b9d3e-7b7b-4375-ab0c-1c491b9a0bb6.png",
       title: "Handcrafted Crochet Items",
       description: "Unique, beautiful, and made with love.",
       buttonText: "Shop Now",
@@ -21,7 +21,7 @@ const Home = () => {
     },
     {
       id: "2",
-      image: "/lovable-uploads/b846a6a2-0f49-4531-af92-b15cfc5209f3.png",
+      image: "/lovable-uploads/6f7bd96b-4657-4691-8cf5-b556328703df.png",
       title: "Adorable Animal Keychains",
       description: "Cute companions for your keys or bags.",
       buttonText: "Shop Keychains",
@@ -29,7 +29,7 @@ const Home = () => {
     },
     {
       id: "3",
-      image: "/lovable-uploads/7f1dae90-18c3-4d87-859d-02b5caca0e5c.png",
+      image: "/lovable-uploads/0cb4548b-6d86-4a20-9349-b419e0ca6852.png",
       title: "Stylish Plant Pots",
       description: "Elevate your plants with our crochet pots.",
       buttonText: "Shop Pots",
@@ -37,19 +37,11 @@ const Home = () => {
     },
     {
       id: "4",
-      image: "/lovable-uploads/c19eacb2-1007-47a3-acc4-394ae7e24705.png",
+      image: "/lovable-uploads/ef0fe840-3b72-4a13-9c63-a6fcb2ba635d.png",
       title: "Forever Blooming Bouquets",
       description: "Flowers that never wilt and always bring joy.",
       buttonText: "Shop Bouquets",
       link: "/category/bouquet",
-    },
-    {
-      id: "5",
-      image: "/lovable-uploads/532920b0-0dc2-4ab4-a0be-58a44d8421d4.png",
-      title: "Decorative Flowers",
-      description: "Add a touch of nature to your home decor.",
-      buttonText: "Shop Flowers",
-      link: "/category/flowers",
     },
   ];
 
